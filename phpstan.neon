@@ -1,0 +1,6 @@
+parameters:
+    level: 9
+    paths:
+        - src
+    ignoreErrors:
+        - '#SimpleConverter\\Temperature\\Model\\[A-Za-z]+::\$[a-z]+ has no type specified#'
