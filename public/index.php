@@ -6,7 +6,8 @@ use SimpleConverter\Temperature\Controller\TemperatureConverterController;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->get('/', TemperatureConverterController::sampleRoute());
+    $r->get('/', [TemperatureConverterController::class, 'converterForm']);
+    $r->post('/', [TemperatureConverterController::class, 'convert']);
 });
 
 $uri = $_SERVER['REQUEST_URI'];
@@ -18,10 +19,9 @@ $uri = rawurldecode($uri);
 $routeInfo = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $uri);
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
-        $routeInfo[1] = 'Not found';
-        break;
+        die('Not found');
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
-        break;
+        die('Method not allowed');
 }
 
-print $routeInfo[1];
+print call_user_func($routeInfo[1]);
