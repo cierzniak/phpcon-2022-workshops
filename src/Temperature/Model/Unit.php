@@ -12,7 +12,7 @@ final class Unit
         'F' => '&deg;F',
     ];
 
-    private $unit;
+    private string $unit;
 
     public static function kelwin(): self
     {
@@ -33,11 +33,6 @@ final class Unit
     {
         self::validate($unit);
         $this->unit = $unit;
-    }
-
-    public function getUnit(): string
-    {
-        return $this->unit;
     }
 
     public function toDisplay(): string

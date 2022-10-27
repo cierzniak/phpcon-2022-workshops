@@ -7,7 +7,7 @@ use Twig\Loader\FilesystemLoader;
 
 class ViewManager
 {
-    public static function render($template, array $context = [])
+    public static function render(string $template, array $context = []): string
     {
         $loader = new FilesystemLoader(__DIR__ . '/../../views');
         $twig = new Environment($loader);

@@ -28,6 +28,9 @@ class TemperatureConverter
         return $this->toTarget($kelvin, $targetUnit);
     }
 
+    /**
+     * @psalm-return CelsiusConverter::class|FahrenheitConverter::class|KelvinConverter::class
+     */
     private function getStrategy(Unit $unit): string
     {
         foreach (self::AVAILABLE_CONVERTERS as $strategy) {

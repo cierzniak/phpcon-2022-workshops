@@ -8,6 +8,6 @@ use SimpleConverter\Temperature\Model\Unit;
 interface TemperatureConverterInterface
 {
     public static function unit(Unit $unit): bool;
-    public static function toKelvin(Temperature $temperature): Temperature;
-    public static function fromKelvin(Temperature $temperature): Temperature;
+
+
 }

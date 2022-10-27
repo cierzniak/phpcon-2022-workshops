@@ -6,8 +6,8 @@ final class Temperature
 {
     private const PRINT_PRECISION = 2;
 
-    private $temperature;
-    private $unit;
+    private float $temperature;
+    private Unit $unit;
 
     public function __construct(float $temperature, Unit $unit)
     {
