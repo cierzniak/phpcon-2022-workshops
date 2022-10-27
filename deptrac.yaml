@@ -1,0 +1,53 @@
+deptrac:
+  paths:
+    - ./src
+  exclude_files: ~
+  layers:
+    - name: External Twig
+      collectors:
+        - type: className
+          value: 'Twig\\.*'
+    - name: ViewManager
+      collectors:
+        - type: class
+          value: 'SimpleConverter\\Common\\ViewManager'
+    - name: Models
+      collectors:
+        - type: className
+          value: '.*SimpleConverter\\.*Model.*'
+    - name: Services
+      collectors:
+        - type: className
+          value: '.*SimpleConverter\\.*Service.*'
+    - name: Strategies
+      collectors:
+        - type: interface
+          value: 'SimpleConverter\\Temperature\\Strategy\\TemperatureConverterInterface'
+        - type: implements
+          value: '\SimpleConverter\Temperature\Strategy\TemperatureConverterInterface'
+    - name: Controllers
+      collectors:
+        - type: directory
+          value: 'src/.*/Controller/.*'
+    - name: Exceptions
+      collectors:
+        - type: classNameRegex
+          value: '#.*Exception\\.*#'
+  ruleset:
+    External Twig: ~
+    ViewManager:
+      - External Twig
+    Models:
+      - Exceptions
+    Services:
+      - Models
+      - Strategies
+      - Exceptions
+    Strategies:
+      - Models
+      - Exceptions
+    Controllers:
+      - ViewManager
+      - Models
+      - Services
+    Exceptions: ~
