@@ -1,0 +1,16 @@
+name: test
+
+on:
+  push:
+    branches: [ psalm ]
+
+jobs:
+  phpqa:
+    runs-on: ubuntu-latest
+    container:
+      image: jakzal/phpqa
+    steps:
+      - name: install dependencies
+        run: composer install
+      - name: psalm
+        run: psalm
