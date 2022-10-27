@@ -1,0 +1,14 @@
+{
+  "name": "cierzniak/simple-converter",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "SimpleConverter\\": "src/"
+    }
+  },
+  "require": {
+    "nikic/fast-route": "^1.3",
+    "twig/twig": "^3.0"
+  }
+}
